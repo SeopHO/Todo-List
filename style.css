@@ -116,3 +116,15 @@ body
     justify-content: center;
     align-items: center;
 }
+.counting
+{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    color:gray;   
+}
+.counting .counting-content
+{
+    margin:3px;
+}
