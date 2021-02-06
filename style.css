@@ -97,8 +97,15 @@ body
 {
     width:100%;
     height:100%;
+    display: flex;
     /* background-color: lightseagreen; */
-    background-color: var(--headBG)
+    background-color: var(--headBG);
+    
+}
+.todo-area
+{
+    width:80%;
+    height:100%;
 }
 .head-area
 {
