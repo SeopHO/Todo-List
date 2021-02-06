@@ -5,6 +5,7 @@ const todolist = document.querySelector(".todolist");
 
 let arr = [];
 
+
 function drawtodolist(text)
 {
     const list_Single = document.createElement("div");
@@ -20,8 +21,15 @@ function drawtodolist(text)
     list_Single.appendChild(li);
     menu_Single.appendChild(menu_Single_1);
     list_Single.appendChild(menu_Single);
-    menu_Single_1.innerHTML = `<i class="deleteSingle fa fa-trash-o fa-lg" style="color:gray;" aria-hidden="true"></i>`;
+    menu_Single_1.innerHTML = `<i class="deleteSingle fa fa-trash-o fa-lg" style="color:gray; cursor: pointer;" aria-hidden="true"></i>`;
     todolist.appendChild(list_Single);
+
+    li.addEventListener("click",function()
+    {
+        console.log('click!');
+
+    });
+    
 }
 
 function handleSubmit(event)
