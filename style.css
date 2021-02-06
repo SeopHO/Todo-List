@@ -46,8 +46,39 @@ body
 {
     width:20%;
     height:100%;
-    /* background-color: lightpink; */
     background-color: var(--headBG);
+    /* background-color: lightpink; */
+
+    padding:20px;
+}
+.side-area .side-area-user
+{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height:30%;
+}
+.side-area-user .side-area-user-image
+{
+    width:100%;
+    height:70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.side-area-user-image .circle-shape
+{
+    width:60%;
+    height:85%;
+    background-color: #4444;
+    border-radius: 50%;
+}
+.side-area-user .side-area-user-name
+{
+    width:100%;
+    height:20%;
+    text-align: center;
+    color:#444;
 }
 .main-area
 {
