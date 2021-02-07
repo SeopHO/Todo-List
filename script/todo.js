@@ -18,11 +18,6 @@ function countNumCalcul(num)
     const CntNum = document.querySelector(".number");
     CntNum.innerHTML = num;
 }
-function deletetodo(event)
-{
-    console.log(event);
-}
-
 
 function drawtodolist(text)
 {
@@ -48,8 +43,8 @@ function drawtodolist(text)
     list_Single.appendChild(menu_Single); //final
     todolist.appendChild(list_Single);
     
-    const listSingles = document.querySelectorAll(".list-single");
-    const deleteSingle = document.querySelector(".delete-Single");
+    const listSingles = document.querySelectorAll("div .list-single");
+    const deleteSingle = document.querySelectorAll("div .delete-Single");
     
     totalNum = listSingles.length;
     totalNulCalcul(totalNum);
@@ -61,9 +56,15 @@ function drawtodolist(text)
         countNumCalcul(singleClear.length);
     });
 
-    deleteSingle.addEventListener("click",deletetodo);
+    deleteSingle.forEach(function(single)
+    {
+        single.addEventListener("click",function(event)
+        {
+            const bigParent = single.closest(".list-single");
+            bigParent.remove();
+        })
+    });
 }
-
 function handleSubmit(event)
 {
     event.preventDefault();
@@ -72,7 +73,6 @@ function handleSubmit(event)
     drawtodolist(value);
     console.log(value);
 }
-
 function init()
 {
     todoform.addEventListener("submit",handleSubmit);
