@@ -190,6 +190,7 @@ body
     height:8%;
     display: flex;
     margin-top:10px;   
+    transition: 0.5s ease;
 }
 .todolist li
 {
