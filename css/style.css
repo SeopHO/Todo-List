@@ -202,11 +202,11 @@ body
     padding:10px;
     list-style: none;
     cursor: pointer;
-
 }
 .todolist span
 {
     font-size: 12px;
+    /* font-weight: bold; */
     vertical-align: middle;
 }
 .todolist .menu-single
@@ -225,3 +225,24 @@ body
     justify-content: center;
     align-items: center;
 }
+.list-single .single-clear
+{
+    background: #4285f4;
+    color:#ffff;
+    font-weight: bold;
+    border:0px;
+    animation-name: change_color;
+    animation-duration: 0.5s;
+}
+@keyframes change_color
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
