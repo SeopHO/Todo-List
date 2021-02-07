@@ -2,7 +2,6 @@
 {
     --headBG:#ffff;
 }
-
 *
 {
     margin:0;
@@ -185,7 +184,6 @@ body
 {
     margin:3px;
 }
-
 .todolist .list-single
 {
     width:100%;
@@ -216,7 +214,7 @@ body
     display: flex;
     align-items: center;
 }
-.menu-single .menu-single-1
+.menu-single .menu-single-box1
 {
     width:20%;
     height:100%;

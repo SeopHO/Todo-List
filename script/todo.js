@@ -8,36 +8,51 @@ let arr = [];
 let totalNum;
 let CountNum;
 
+function totalNulCalcul(num)
+{
+    const CntTotal = document.querySelector(".total");
+    CntTotal.innerHTML = num;
+}
+function countNumCalcul(num)
+{
+    const CntNum = document.querySelector(".number");
+    CntNum.innerHTML = num;
+}
+
 function drawtodolist(text)
 {
     const list_Single = document.createElement("div");
     const menu_Single = document.createElement("div");
-    const menu_Single_1 = document.createElement("div");
+    const menu_Single_box1 = document.createElement("div");
+
+    const li = document.createElement("li");
+    const span = document.createElement("span");
 
     list_Single.className = "list-single";
     menu_Single.className = "menu-single";
-    menu_Single_1.className = "menu-single-1";
-    const li = document.createElement("li");
-    const span = document.createElement("span");
-    span.innerHTML = text;
-    li.appendChild(span);
+    menu_Single_box1.className = "menu-single-box1";
 
-    list_Single.appendChild(li);
-    menu_Single.appendChild(menu_Single_1);
-    list_Single.appendChild(menu_Single);
-    menu_Single_1.innerHTML = `<i class="deleteSingle fa fa-trash-o fa-lg" style="color:gray; cursor: pointer;" aria-hidden="true"></i>`;
+    span.innerHTML = text;
+    menu_Single_box1.innerHTML = `<i class="deleteSingle fa fa-trash-o fa-lg" style="color:gray; cursor: pointer;" aria-hidden="true"></i>`;
+
+    li.appendChild(span);
+    list_Single.appendChild(li); //final
+
+    menu_Single.appendChild(menu_Single_box1);
+
+    list_Single.appendChild(menu_Single); //final
     todolist.appendChild(list_Single);
     
-    const deleteSingle = document.querySelectorAll(".deleteSingle");
-    console.log('deleteSingle Btn',deleteSingle.length);
-    
+    const listSingle = document.querySelectorAll(".list-single");
+
+    totalNum = listSingle.length;
+    totalNulCalcul(totalNum);
 
     li.addEventListener("click",function()
     {
-        // span.innerHTML = `<hr width="100%" align="center">`;
-        // const line = document.createElement("hr");
-        // li.appendChild(line);
         li.classList.toggle("single-clear");
+        const singleClear = document.querySelectorAll(".single-clear");
+        countNumCalcul(singleClear.length);
     });
 }
 
@@ -54,5 +69,11 @@ function init()
 {
     todoform.addEventListener("submit",handleSubmit);
 }
+
+function test(num)
+{
+    listSingle[num].style.display="none";
+}
+
 
 init();
