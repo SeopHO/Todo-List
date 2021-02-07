@@ -27,8 +27,11 @@ function drawtodolist(text)
     list_Single.appendChild(menu_Single);
     menu_Single_1.innerHTML = `<i class="deleteSingle fa fa-trash-o fa-lg" style="color:gray; cursor: pointer;" aria-hidden="true"></i>`;
     todolist.appendChild(list_Single);
-
     
+    const deleteSingle = document.querySelectorAll(".deleteSingle");
+    console.log('deleteSingle Btn',deleteSingle.length);
+    
+
     li.addEventListener("click",function()
     {
         // span.innerHTML = `<hr width="100%" align="center">`;
