@@ -17,7 +17,6 @@ function countNumCalcul(num)
 }
 function drawtodolist(text)
 {
-
     const div_list_Single = document.createElement("div");
     const div_menu_Single = document.createElement("div");
     const div_menu_Single_box1 = document.createElement("div");
@@ -41,29 +40,32 @@ function drawtodolist(text)
     todolist.appendChild(div_list_Single);
     
     const listSingles = document.querySelectorAll("div .list-single");
-    const deleteSingle = document.querySelectorAll("div .delete-Single");
+    const deleteSingle = document.querySelector("div .delete-Single");
     
     li.addEventListener("click",function()
     {
         li.classList.toggle("single-clear");
         const singleClear = document.querySelectorAll(".single-clear");
-        countNumCalcul(singleClear.length)  ;
+        countNumCalcul(singleClear.length);
     });
 
-    deleteSingle.forEach(function(single)
+    // listSingles.forEach(function(single)
+    // {
+    //     single.addEventListener("click",function(event)
+    //     {
+    //         const bigParent = single.closest(".list-single");
+    //         bigParent.remove();
+    //         console.log(listSingles.length);
+    //         totalNulCalcul(listSingles.length);
+    //     })
+    // });
+    // totalNulCalcul(listSingles.length);
+
+    deleteSingle.addEventListener("click",function()
     {
-        single.addEventListener("click",function(event)
-        {
-            const bigParent = single.closest(".list-single");
-            bigParent.remove();
-
-            
-            // totalNulCalcul(listSingles.length);
-        })
-        
+        const bigParent = deleteSingle.closest(".list-single"); 
+        bigParent.remove();
     });
-    totalNulCalcul(listSingles.length);
-
 }
 function handleSubmit(event)
 {
@@ -71,12 +73,10 @@ function handleSubmit(event)
     const value = todoInput.value;
     todoInput.value="";
     drawtodolist(value);
-    console.log(value);
+    // console.log(value);
 }
 function init()
 {
     todoform.addEventListener("submit",handleSubmit);
-
 }
-
 init();
