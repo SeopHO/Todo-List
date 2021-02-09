@@ -1,3 +1,9 @@
+let item={
+    content:null,
+    status:false,
+}
+
+let arr=[];
 //Selector
 const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
@@ -11,8 +17,16 @@ function handleSubmit(event)
 {
     event.preventDefault();
     const value = todoInput.value;
+    if(value==="")
+    {
+        console.log('제대로 적어라');
+    }
+    else
+    {
+        drawtodolist(value);
+    }
+
     todoInput.value="";
-    drawtodolist(value);
     // console.log(value);
 }
 
@@ -56,13 +70,21 @@ function drawtodolist(text)
     {
         const bigParent = trashBtn.closest(".list-single");
         bigParent.remove();
-
     });
+
+    createItem(text);
+}
+
+function createItem(text)
+{
+    item.content=text;
+
+    
 }
 
 function todoTotalCount(num)
 {
-       
+
 }
 function todoNumCount(num)
 {
