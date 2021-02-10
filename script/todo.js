@@ -1,9 +1,5 @@
-let item={
-    content:null,
-    status:false,
-}
-
-let arr=[];
+let listArray=[];
+let ClearArray=[];
 //Selector
 const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
@@ -66,27 +62,41 @@ function drawtodolist(text)
     })
 
     //trashBtn
-    trashBtn.addEventListener('click',function()
-    {
+    trashBtn.addEventListener('click',function(event)
+    {   
         const bigParent = trashBtn.closest(".list-single");
         bigParent.remove();
+        todoTotalCount(span.textContent,"decrease");
     });
 
-    createItem(text);
+    todoTotalCount(text,"increase");
+
 }
 
-function createItem(text)
+function todoTotalCount(value,check)
 {
-    item.content=text;
+    const countingContentNum = document.querySelector(".total");
+    if(check === "increase")
+    {
+        listArray.push(`${value}`);
+        console.log(listArray);
+    }
+    else if(check === "decrease")
+    {
+        for(let i=0;i<listArray.length;i++)
+        {
+            if(listArray[i] === `${value}`)
+            {
+                listArray.remove(i);
+            }
+        }
+        console.log(listArray);
+        
+    }
+    countingContentNum.innerHTML = listArray.length;
 
-    
 }
-
-function todoTotalCount(num)
-{
-
-}
-function todoNumCount(num)
+function todoNumCount()
 {
 
 }
