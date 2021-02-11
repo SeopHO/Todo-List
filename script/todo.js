@@ -89,11 +89,13 @@ function drawtodolist(text)
         if(li.classList.contains("single-clear"))
         {
             listArray[liId].finish=true;
+            
         }
         else if(!(li.classList.contains("single-clear")))
         {
             listArray[liId].finish=false;
         }
+        todoFinishCount();
     })
 
     //trashBtn
@@ -132,30 +134,18 @@ function todoTotalCount(obj=null,num=0,check="increase")
     createScrollbar();
 
 }
-function todoClearCount(value,check)
+function todoFinishCount()
 {
     const countingContentNum = document.querySelector(".number");
-    if(check==="increase")
+    let cnt=0;
+    for(let i=0;i<listArray.length;i++)
     {
-        clearlistArray.push(`${value}`);
-        // console.log(clearlistArray);
-        
-    }
-    else if(check === "decrease")
-    {
-        for(let i=0;i<clearlistArray.length;i++)
+        if(listArray[i].finish === true)
         {
-            if(clearlistArray[i] === `${value}`)
-            {
-                const idx = clearlistArray.indexOf(`${value}`);
-                // console.log('clear it!',value,idx);
-                if(idx>-1)
-                clearlistArray.splice(idx,1);
-            }
+            cnt++;
         }
-        // console.log(clearlistArray);
     }
-    countingContentNum.innerHTML=clearlistArray.length;
+    countingContentNum.innerHTML=cnt;
 }
 
 function createScrollbar()
