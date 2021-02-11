@@ -75,8 +75,9 @@ function drawtodolist(text)
         const bigParent = trashBtn.closest(".list-single");
         bigParent.remove();
         todoTotalCount(span.textContent,"decrease");
-    });
+        todoClearCount(span.textContent,"decrease");
 
+    });
     todoTotalCount(text,"increase");
 
 }
