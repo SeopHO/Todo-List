@@ -1,5 +1,7 @@
 let listArray=[];
 let clearlistArray=[];
+
+let LIST_LS="list-local";
 //Selector
 const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
@@ -13,6 +15,8 @@ function handleSubmit(event)
 {
     event.preventDefault();
     const value = todoInput.value;
+    // console.log(value);
+    
     if(value==="")
     {
         console.log('제대로 적어라');
@@ -25,7 +29,23 @@ function handleSubmit(event)
     todoInput.value="";
     // console.log(value);
 }
-
+function saveList()
+{
+    localStorage.setItem(LIST_LS,listArray);
+}
+function loadList()
+{
+    const loadLIST = localStorage.getItem(LIST_LS);
+    if(loadLIST !== null)
+    {
+        // const parsesList = JSON.parse(loadLIST);
+        console.log(loadLIST);
+        for(let i=0;i<loadLIST.length;i++)
+        {
+            drawtodolist(loadLIST[i]);
+        }
+    }
+}
 function drawtodolist(text)
 {
     //create Element
@@ -40,6 +60,7 @@ function drawtodolist(text)
     div_menu_Single.className = "menu-single";
     const div_menu_Single_box1 = document.createElement("div");
     div_menu_Single_box1.className = "menu-single-box1";
+
     const trashBtn = document.createElement("i");
     trashBtn.classList.add("trashBtn");
     trashBtn.classList.add("fa");
@@ -76,12 +97,10 @@ function drawtodolist(text)
         bigParent.remove();
         todoTotalCount(span.textContent,"decrease");
         todoClearCount(span.textContent,"decrease");
-
     });
     todoTotalCount(text,"increase");
-
+    saveList();
 }
-
 function todoTotalCount(value,check)
 {
     const countingContentTotal = document.querySelector(".total");
@@ -102,10 +121,11 @@ function todoTotalCount(value,check)
                     listArray.splice(idx,1);
             }
         }
-        console.log(listArray);
-        
+        // console.log(listArray);
     }
     countingContentTotal.innerHTML = listArray.length;
+    createScrollbar();
+
 }
 function todoClearCount(value,check)
 {
@@ -113,7 +133,7 @@ function todoClearCount(value,check)
     if(check==="increase")
     {
         clearlistArray.push(`${value}`);
-        console.log(clearlistArray);
+        // console.log(clearlistArray);
         
     }
     else if(check === "decrease")
@@ -123,12 +143,32 @@ function todoClearCount(value,check)
             if(clearlistArray[i] === `${value}`)
             {
                 const idx = clearlistArray.indexOf(`${value}`);
-                console.log('clear it!',value,idx);
+                // console.log('clear it!',value,idx);
                 if(idx>-1)
                 clearlistArray.splice(idx,1);
             }
         }
-        console.log(clearlistArray);
+        // console.log(clearlistArray);
     }
     countingContentNum.innerHTML=clearlistArray.length;
 }
+
+function createScrollbar()
+{
+    const todoArea = document.querySelector(".todo-area");
+    if(listArray.length <= 10)
+    {
+        todoArea.style.overflow = "hidden";
+    }
+    else
+    {
+        todoArea.style.overflow = "auto";
+    }
+}
+
+function init()
+{
+    loadList();
+}
+
+init();
