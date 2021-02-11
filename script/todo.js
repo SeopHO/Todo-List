@@ -1,5 +1,5 @@
 let listArray=[];
-let ClearlistArray=[];
+let clearlistArray=[];
 //Selector
 const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
@@ -59,7 +59,14 @@ function drawtodolist(text)
     li.addEventListener("click",function()
     {
         li.classList.toggle("single-clear");
-
+        if(li.classList.contains("single-clear"))
+        {
+            todoClearCount(text,"increase");
+        }
+        else if(!(li.classList.contains("single-clear")))
+        {
+            todoClearCount(text,"decrease");
+        }
     })
 
     //trashBtn
@@ -80,7 +87,7 @@ function todoTotalCount(value,check)
     if(check === "increase")
     {
         listArray.push(`${value}`);
-        console.log(listArray);
+        // console.log(listArray);
     }
     else if(check === "decrease")
     {
@@ -89,7 +96,7 @@ function todoTotalCount(value,check)
             if(listArray[i] === `${value}`)
             {
                 const idx = listArray.indexOf(`${value}`);
-                console.log('find it!',value,idx);
+                // console.log('find it!',value,idx);
                 if(idx>-1)
                     listArray.splice(idx,1);
             }
@@ -99,7 +106,28 @@ function todoTotalCount(value,check)
     }
     countingContentTotal.innerHTML = listArray.length;
 }
-function todoClearCount()
+function todoClearCount(value,check)
 {
-    const countingContentNum
+    const countingContentNum = document.querySelector(".number");
+    if(check==="increase")
+    {
+        clearlistArray.push(`${value}`);
+        console.log(clearlistArray);
+        
+    }
+    else if(check === "decrease")
+    {
+        for(let i=0;i<clearlistArray.length;i++)
+        {
+            if(clearlistArray[i] === `${value}`)
+            {
+                const idx = clearlistArray.indexOf(`${value}`);
+                console.log('clear it!',value,idx);
+                if(idx>-1)
+                clearlistArray.splice(idx,1);
+            }
+        }
+        console.log(clearlistArray);
+    }
+    countingContentNum.innerHTML=clearlistArray.length;
 }
