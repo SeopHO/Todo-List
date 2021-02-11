@@ -1,5 +1,5 @@
 let listArray=[];
-let ClearArray=[];
+let ClearlistArray=[];
 //Selector
 const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
@@ -59,6 +59,7 @@ function drawtodolist(text)
     li.addEventListener("click",function()
     {
         li.classList.toggle("single-clear");
+
     })
 
     //trashBtn
@@ -75,7 +76,7 @@ function drawtodolist(text)
 
 function todoTotalCount(value,check)
 {
-    const countingContentNum = document.querySelector(".total");
+    const countingContentTotal = document.querySelector(".total");
     if(check === "increase")
     {
         listArray.push(`${value}`);
@@ -87,16 +88,18 @@ function todoTotalCount(value,check)
         {
             if(listArray[i] === `${value}`)
             {
-                listArray.remove(i);
+                const idx = listArray.indexOf(`${value}`);
+                console.log('find it!',value,idx);
+                if(idx>-1)
+                    listArray.splice(idx,1);
             }
         }
         console.log(listArray);
         
     }
-    countingContentNum.innerHTML = listArray.length;
-
+    countingContentTotal.innerHTML = listArray.length;
 }
-function todoNumCount()
+function todoClearCount()
 {
-
+    const countingContentNum
 }
