@@ -29,16 +29,25 @@ function handleSubmit(event)
     todoInput.value="";
     // console.log(value);
 }
+function listFinishLoad(boolean)
+{
+    return boolean;
+}
 function saveList()
 {
-    localStorage.setItem(LIST_LS,listArray);
+    localStorage.setItem(LIST_LS,JSON.stringify(listArray));
 }
+
 function loadList()
 {
     const loadLIST = localStorage.getItem(LIST_LS);
     if(loadLIST !== null)
     {
-
+        const parsedList = JSON.parse(loadLIST);
+        parsedList.forEach(function(single)
+        {
+            drawtodolist(single.text);
+        });
     }
 }
 function drawtodolist(text)
@@ -73,7 +82,7 @@ function drawtodolist(text)
     const listObj={
         id:listArray.length,
         text:text,
-        finish:false,
+        finish:null,
     }
     listArray.push(listObj);
     console.log(listArray);
@@ -89,15 +98,17 @@ function drawtodolist(text)
         if(li.classList.contains("single-clear"))
         {
             listArray[liId].finish=true;
-            
+            listFinishLoad(true);
+
         }
         else if(!(li.classList.contains("single-clear")))
         {
             listArray[liId].finish=false;
+            listFinishLoad(false);
         }
+        saveList(liId,li);
         todoFinishCount();
     })
-
     //trashBtn
     trashBtn.addEventListener('click',function(event)
     {   
@@ -116,11 +127,13 @@ function drawtodolist(text)
         liAll.forEach(function(single_li)
         {
             single_li.id = numId++;
+
         });
-        // todoClearCount(span.textContent,"decrease");
+        todoFinishCount();
+        saveList();
     });
     todoTotalCount();
-    // saveList();
+    saveList();
 }
 function todoTotalCount(obj=null,num=0,check="increase")
 {
