@@ -1,0 +1,27 @@
+.user-input
+{
+    width:70%;
+    height:100%;
+    border:none;
+    
+    border-bottom:1px solid gray;
+    /* border-radius: 5px; */
+    padding:10px;
+}
+.side-area-user-name p, .side-area-user-name .fa-pencil-square-o
+{
+    animation-name: fadein;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadein
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
