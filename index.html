@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="./css/container.css">
+    <link rel="stylesheet" href="./css/TodoListStyle.css">
     <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -27,7 +27,7 @@
                         <i class="fa fa-plus fa-lg" style="color:#4285f4; cursor: pointer;" aria-hidden="true"></i>
                     </div>
                     <div class="deleteAll-button">
-                        <i class="deleteAll fa fa-trash-o fa-lg" style="color:gray; cursor: pointer;" aria-hidden="true"></i>
+                        <i class="deleteAll fa fa-trash-o fa-lg" style="color:rgb(255, 131, 131); cursor: pointer;" aria-hidden="true"></i>
                     </div>
                     <div class="counting">
                         <h1 class="counting-content number">0</h1>
@@ -50,15 +50,19 @@
                     <div class="side-area-functions">
                         <div class="functions Todo">
                                 <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-                            <p>TodoList</p>
+                            <p style="cursor: pointer">TodoList</p>
                         </div>
                         <div class="functions achievement">
                                 <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-                            <p>Achievement</p>
+                            <p style="cursor: pointer">Achievement</p>
                         </div>
                         <div class="functions yourpet">
                                 <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-                            <p>Your Pet</p>
+                            <p style="cursor: pointer">Your Pet</p>
+                        </div>
+                        <div class="functions View">
+                            <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
+                            <p style="cursor: pointer">View</p>
                         </div>
                     </div>
                 </div>
@@ -67,10 +71,19 @@
                         
                     </div>
                 </div>
+                <div class="Achievement-area">
+                    <div class="AchievementList">
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="Achievement-container">
+
+    </div>
+    <script src="script/app.js"></script>
     <script src="./script/todo.js"></script>
     <script src="./script/user.js"></script>
 </body>

@@ -7,10 +7,17 @@ const todoform = document.querySelector(".todo-form"),
 todoInput = todoform.querySelector(".todo");
 const todolist = document.querySelector(".todolist");
 
+const todoDeleteAllBtn = document.querySelector(".head-area-menu .deleteAll");
+const todoSubmitBtn = document.querySelector(".head-area-menu .add-button");
+
 //Event Listener
 todoform.addEventListener("submit",handleSubmit);
+todoSubmitBtn.addEventListener("click",handleSubmit);
+
+todoDeleteAllBtn.addEventListener("click",listDeleteAll);
 
 //function
+
 function handleSubmit(event)
 {
     event.preventDefault();
@@ -159,6 +166,19 @@ function todoFinishCount()
         }
     }
     countingContentNum.innerHTML=cnt;
+
+    if(cnt === listArray.length)
+    {
+        console.log('축하합니다!');
+        
+    }
+}
+function listDeleteAll()
+{
+    const findSingleLists = todolist.getElementsByClassName("list-single");
+    console.log(findSingleLists);
+    findSingleLists.remove();
+    
 }
 
 function createScrollbar()

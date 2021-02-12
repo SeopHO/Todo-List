@@ -15,13 +15,12 @@ function createUserEdit()
     userInput.type = "text";
     userInput.placeholder = "Write your name";
     userInput.maxLength = '10';
-
+    
     userForm.appendChild(userInput);
     AreaUserName.appendChild(userForm);
 
     userNameText.style.display = 'none';
     userEditBtn.style.display = 'none';
-
 
     userForm.addEventListener("submit",function(){
         const bigParent = userForm.closest(".user-form");
@@ -29,7 +28,6 @@ function createUserEdit()
         const uText = userInput.value;
         userSubmitHandle(uText);
     });
-
 }
 function saveUser(text)
 {
