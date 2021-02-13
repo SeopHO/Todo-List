@@ -17,7 +17,6 @@ todoSubmitBtn.addEventListener("click",handleSubmit);
 todoDeleteAllBtn.addEventListener("click",listDeleteAll);
 
 //function
-
 function handleSubmit(event)
 {
     event.preventDefault();
@@ -167,10 +166,9 @@ function todoFinishCount()
     }
     countingContentNum.innerHTML=cnt;
 
-    if(cnt === listArray.length)
+    if((cnt === listArray.length) || !(cnt === 0 && listArray.length === 0))
     {
-        console.log('축하합니다!');
-        
+        // alert("축하합니다!");  
     }
 }
 function listDeleteAll()
@@ -191,10 +189,7 @@ function listDeleteAll()
     }
     todoFinishCount();
     saveList();
-    
-    
 }
-
 function createScrollbar()
 {
     const todoArea = document.querySelector(".todo-area");
@@ -207,10 +202,8 @@ function createScrollbar()
         todoArea.style.overflow = "auto";
     }
 }
-
 function init()
 {
     loadList();
 }
-
 init();

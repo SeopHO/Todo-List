@@ -31,7 +31,7 @@ function createUserEdit()
 }
 function saveUser(text)
 {
-    localStorage.setItem(USER_LS,text)
+    localStorage.setItem(USER_LS,text);
 }
 function loadUser()
 {
@@ -49,7 +49,6 @@ function drawUserName(value)
 
     userNameText.innerHTML = value;
     saveUser(value);
-
 }
 
 function userSubmitHandle(value)
