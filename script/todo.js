@@ -176,8 +176,22 @@ function todoFinishCount()
 function listDeleteAll()
 {
     const findSingleLists = todolist.getElementsByClassName("list-single");
-    console.log(findSingleLists);
-    findSingleLists.remove();
+    for(let i=0;i<findSingleLists.length;)
+    {
+        console.log(i);
+        findSingleLists[i].remove();
+    }
+    // for(let i=0;i<listArray.length;)
+    // {
+    //     listArray.splice(i,1);
+    // }
+    for(let i=0;i<listArray.length;)
+    {
+        todoTotalCount(0,i,"decrease");
+    }
+    todoFinishCount();
+    saveList();
+    
     
 }
 
